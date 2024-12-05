@@ -7,13 +7,14 @@
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
-    <h3>Best of Seven</h3>
+    <h2>Best of Seven</h2>
+    <h3 class="round-count">Round: 0</h3>
     <div class="rps-buttons">
         <button class="rock-btn">ROCK</button>
         <button class="paper-btn">PAPER</button>
         <button class="scissors-btn">SCISSORS</button>
     </div>
-    <div class="results-box">
+    <div class="choices-box">
         <div class="both-choices">
             <div class="player-choice"></div>
             <div class="charlotte-choice"></div>
@@ -22,6 +23,10 @@
             <div class="round-result"></div>
             <div class="player-score">You: 0</div>
             <div class="charlotte-score">Charlotte: 0</div>
+        </div>
+        <div class="match-results-container">
+            <div class="match-result"></div>
+            <button class="play-again">PLAY AGAIN</button>
         </div>
     </div>
     <script src="./script.js"></script>

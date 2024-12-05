@@ -2,24 +2,38 @@ let playerScore = 0;
 let charlotteScore = 0;
 let playerChoice = "";
 let charlotteChoice = "";
+let playCount = 0;
 
 const rockButton = document.querySelector(".rock-btn");
 const paperButton = document.querySelector(".paper-btn");
 const scissorsButton = document.querySelector(".scissors-btn");
+const roundCount = document.querySelector(".round-count");
 
-// Buttons will save the Player's choice and play a round
-rockButton.addEventListener("click", () => {
-    getPlayerChoice(".rock-btn")
-    playRound();
-});
-paperButton.addEventListener("click", () => {
-    getPlayerChoice(".paper-btn")
-    playRound();
-});
-scissorsButton.addEventListener("click", () => {
-    getPlayerChoice(".scissors-btn")
-    playRound();
-});
+rockButton.addEventListener("click", () => handlePlayerChoice(".rock-btn"));
+paperButton.addEventListener("click", () => handlePlayerChoice(".paper-btn"));
+scissorsButton.addEventListener("click", () => handlePlayerChoice(".scissors-btn"));
+
+// Saves the Player's choice and plays a round
+function handlePlayerChoice(buttonClass) {
+    if (playCount < 7) {
+        getPlayerChoice(buttonClass);
+        playCount++;
+        startGame();
+        roundCount.innerText = `Round: ${playCount}`;
+
+        if (playerScore === 4 || charlotteScore === 4) {
+            // End the game early if a player reaches 4 points first
+            gameResults();
+            resetGame();
+        }
+        if (playCount === 7) {
+            startGame(); // Explicitly play the final round
+            gameResults(); // Show results after final round updates
+        }
+    } else {
+        resetGame(); // Reset the game if clicked after 7 rounds
+    }
+};
 
 // Generate 3 random numbers
 function getRandomInt(max) {
@@ -31,19 +45,19 @@ function getPlayerChoice(buttonClass) {
     if (buttonClass === ".rock-btn") {
         playerChoice = "Rock";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
+        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
         return playerChoice        
     }
     else if (buttonClass === ".paper-btn") {
         playerChoice = "Paper";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
+        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
         return playerChoice      
     }
     else if (buttonClass === ".scissors-btn") {
         playerChoice = "Scissors";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
+        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
         return playerChoice      
     };
 };
@@ -77,6 +91,7 @@ function getRoundResult() {
 
     if (playerChoice === charlotteChoice) {
         console.log("It's a tie")
+        document.querySelector(".round-result").innerText = "It's a tie"
     } else if (
         (playerChoice === "Rock" && charlotteChoice === "Scissors") ||
         (playerChoice === "Paper" && charlotteChoice === "Rock") ||
@@ -99,15 +114,43 @@ function playRound() {
     getRoundResult();
 };
 
+// Updates results
+function gameResults() {
+    if (playerScore > charlotteScore) {
+    document.querySelector(".match-result").innerText = "You've won this match"
+    return
+    } else if (charlotteScore > playerScore) {
+        document.querySelector(".match-result").innerText = "Charlotte wins the match"
+    } else {
+        document.querySelector(".match-result").innerText = "Draw"
+    }
+}
+
+// Resets game
+function resetGame() {
+    playerScore = 0;
+    charlotteScore = 0;
+    playerChoice = "";
+    charlotteChoice = "";
+    playCount = 0;
+    document.querySelector(".round-count").innerText = `Round: ${playCount}`;
+    document.querySelector(".player-choice").innerText = `${playerChoice}`;
+    document.querySelector(".charlotte-choice").innerText = `${charlotteChoice}`;
+    document.querySelector(".player-score").innerText = `You: ${playerScore}`;
+    document.querySelector(".charlotte-score").innerText = `You: ${charlotteScore}`;
+    document.querySelector(".round-result").innerText = "";
+    document.querySelector(".match-result").innerText = "";
+}
+
 // Plays the game
 function startGame() {
-    while ((playerScore < 5) ||
-           (charlotteScore < 5)) {
-            playRound()
-           }
-           if (playerScore === 5) {
-            document.querySelector(".")
-           }
+    playRound();
+};
+
+// Button to reset the game
+document.querySelector(".play-again").addEventListener("click", () => playAgain())
+function playAgain() {
+    resetGame();
 }
 
 /* CLI version code, we'll keep it here as a reference for the time being
