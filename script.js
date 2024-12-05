@@ -15,27 +15,27 @@ scissorsButton.addEventListener("click", () => handlePlayerChoice(".scissors-btn
 
 // Saves the Player's choice and plays a round
 function handlePlayerChoice(buttonClass) {
-    if (playCount < 7) {
+    if (playCount < 9) {
         getPlayerChoice(buttonClass);
         playCount++;
         startGame();
         roundCount.innerText = `Round: ${playCount}`;
 
-        if (playerScore === 4 || charlotteScore === 4) {
-            // End the game early if a player reaches 4 points first
+        if (playerScore === 5 || charlotteScore === 5) {
+            // End the game early if a player reaches 5 points first
             gameResults();
             resetGame();
         }
-        if (playCount === 7) {
+        if (playCount === 9) {
             startGame(); // Explicitly play the final round
             gameResults(); // Show results after final round updates
         }
     } else {
-        resetGame(); // Reset the game if clicked after 7 rounds
+        resetGame(); // Reset the game if clicked after 9 rounds
     }
 };
 
-// Generate 3 random numbers
+// Generates 3 random numbers
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
