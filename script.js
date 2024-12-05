@@ -31,16 +31,19 @@ function getPlayerChoice(buttonClass) {
     if (buttonClass === ".rock-btn") {
         playerChoice = "Rock";
         console.log(`You chose ${playerChoice}`)
+        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
         return playerChoice        
     }
     else if (buttonClass === ".paper-btn") {
         playerChoice = "Paper";
         console.log(`You chose ${playerChoice}`)
+        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
         return playerChoice      
     }
     else if (buttonClass === ".scissors-btn") {
         playerChoice = "Scissors";
         console.log(`You chose ${playerChoice}`)
+        document.querySelector(".player-choice").innerText = `You chose ${charlotteChoice}`;
         return playerChoice      
     };
 };
@@ -50,17 +53,20 @@ function getCharlotteChoice() {
     let charlotteNumber = getRandomInt(3);
     if (charlotteNumber == 0) {
         charlotteChoice = "Rock";
-        console.log(`Charlotte chose ${charlotteChoice}`)
+        console.log(`Charlotte chose ${playerChoice}`)
+        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
         return charlotteChoice
     }
     else if (charlotteNumber == 1) {
         charlotteChoice = "Paper";
-        console.log(`Charlotte chose ${charlotteChoice}`)
+        console.log(`Charlotte chose ${playerChoice}`)
+        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
         return charlotteChoice
     }
     else if (charlotteNumber == 2) {
         charlotteChoice = "Scissors";
-        console.log(`Charlotte chose ${charlotteChoice}`)
+        console.log(`Charlotte chose ${playerChoice}`)
+        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
         return charlotteChoice
     };
 };
@@ -77,10 +83,14 @@ function getRoundResult() {
         (playerChoice === "Scissors" && charlotteChoice === "Paper")
     ) { 
         console.log("You win");
-        playerScore++; // +1 player score          
+        document.querySelector(".round-result").innerText = "You win"
+        playerScore++; // +1 player score
+        document.querySelector(".player-score").innerText = `You: ${playerScore}`;          
     } else {
         console.log("Charlotte wins");
+        document.querySelector(".round-result").innerText = "Charlotte wins"
         charlotteScore++; // + 1 charlotte score
+        document.querySelector(".charlotte-score").innerText = `Charlotte: ${charlotteScore}`; 
     };
 };
 
@@ -89,9 +99,16 @@ function playRound() {
     getRoundResult();
 };
 
-function handleAllHTML() {
-
-};
+// Plays the game
+function startGame() {
+    while ((playerScore < 5) ||
+           (charlotteScore < 5)) {
+            playRound()
+           }
+           if (playerScore === 5) {
+            document.querySelector(".")
+           }
+}
 
 /* CLI version code, we'll keep it here as a reference for the time being
 
