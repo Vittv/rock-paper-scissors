@@ -3,6 +3,7 @@ let charlotteScore = 0;
 let playerChoice = "";
 let charlotteChoice = "";
 let playCount = 0;
+let gameOver = false;
 
 const rockButton = document.querySelector(".rock-btn");
 const paperButton = document.querySelector(".paper-btn");
@@ -15,23 +16,16 @@ scissorsButton.addEventListener("click", () => handlePlayerChoice(".scissors-btn
 
 // Saves the Player's choice and plays a round
 function handlePlayerChoice(buttonClass) {
-    if (playCount < 9) {
-        getPlayerChoice(buttonClass);
-        playCount++;
-        startGame();
-        roundCount.innerText = `Round: ${playCount}`;
+    if (gameOver) return; // Stop the game if the game is over
 
-        if (playerScore === 5 || charlotteScore === 5) {
-            // End the game early if a player reaches 5 points first
-            gameResults();
-            resetGame();
-        }
-        if (playCount === 9) {
-            startGame(); // Explicitly play the final round
-            gameResults(); // Show results after final round updates
-        }
-    } else {
-        resetGame(); // Reset the game if clicked after 9 rounds
+    getPlayerChoice(buttonClass);
+    playCount++;
+    roundCount.innerText = `Round: ${playCount}`;
+    playRound();
+    // End the game if a player reaches 5 points first
+    if (playerScore === 5 || charlotteScore === 5) {
+        gameOver = true;
+        gameResults();
     }
 };
 
@@ -133,11 +127,12 @@ function resetGame() {
     playerChoice = "";
     charlotteChoice = "";
     playCount = 0;
+    gameOver = false; // Reset gameOver so the game can restart
     document.querySelector(".round-count").innerText = `Round: ${playCount}`;
     document.querySelector(".player-choice").innerText = `${playerChoice}`;
     document.querySelector(".charlotte-choice").innerText = `${charlotteChoice}`;
     document.querySelector(".player-score").innerText = `You: ${playerScore}`;
-    document.querySelector(".charlotte-score").innerText = `You: ${charlotteScore}`;
+    document.querySelector(".charlotte-score").innerText = `Charlotte: ${charlotteScore}`;
     document.querySelector(".round-result").innerText = "";
     document.querySelector(".match-result").innerText = "";
 }
