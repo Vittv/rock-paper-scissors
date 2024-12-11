@@ -124,8 +124,8 @@ function gameResults() {
 function resetGame() {
     playerScore = 0;
     charlotteScore = 0;
-    playerChoice = "";
-    charlotteChoice = "";
+    playerChoice = "your choice";
+    charlotteChoice = "charlotte's choice";
     playCount = 0;
     gameOver = false; // Reset gameOver so the game can restart
     document.querySelector(".round-count").innerText = `Round: ${playCount}`;
@@ -133,8 +133,8 @@ function resetGame() {
     document.querySelector(".charlotte-choice").innerText = `${charlotteChoice}`;
     document.querySelector(".player-score").innerText = `You: ${playerScore}`;
     document.querySelector(".charlotte-score").innerText = `Charlotte: ${charlotteScore}`;
-    document.querySelector(".round-result").innerText = "";
-    document.querySelector(".match-result").innerText = "";
+    document.querySelector(".round-result").innerText = "round result";
+    document.querySelector(".match-result").innerText = "match winner";
 }
 
 // Plays the game
