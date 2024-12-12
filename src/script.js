@@ -39,19 +39,19 @@ function getPlayerChoice(buttonClass) {
     if (buttonClass === ".rock-btn") {
         playerChoice = "Rock";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
+        document.querySelector(".player-choice").innerHTML = `You chose <strong>${playerChoice}</strong>`;
         return playerChoice        
     }
     else if (buttonClass === ".paper-btn") {
         playerChoice = "Paper";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
+        document.querySelector(".player-choice").innerHTML = `You chose <strong>${playerChoice}</strong>`;
         return playerChoice      
     }
     else if (buttonClass === ".scissors-btn") {
         playerChoice = "Scissors";
         console.log(`You chose ${playerChoice}`)
-        document.querySelector(".player-choice").innerText = `You chose ${playerChoice}`;
+        document.querySelector(".player-choice").innerHTML = `You chose <strong>${playerChoice}</strong>`;
         return playerChoice      
     };
 };
@@ -62,19 +62,19 @@ function getCharlotteChoice() {
     if (charlotteNumber == 0) {
         charlotteChoice = "Rock";
         console.log(`Charlotte chose ${playerChoice}`)
-        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
+        document.querySelector(".charlotte-choice").innerHTML = `Charlotte chose <strong>${charlotteChoice}</strong>`;
         return charlotteChoice
     }
     else if (charlotteNumber == 1) {
         charlotteChoice = "Paper";
         console.log(`Charlotte chose ${playerChoice}`)
-        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
+        document.querySelector(".charlotte-choice").innerHTML = `Charlotte chose <strong>${charlotteChoice}</strong>`;
         return charlotteChoice
     }
     else if (charlotteNumber == 2) {
         charlotteChoice = "Scissors";
         console.log(`Charlotte chose ${playerChoice}`)
-        document.querySelector(".charlotte-choice").innerText = `Charlotte chose ${charlotteChoice}`;
+        document.querySelector(".charlotte-choice").innerHTML = `Charlotte chose <strong>${charlotteChoice}</strong>`;
         return charlotteChoice
     };
 };
@@ -124,13 +124,13 @@ function gameResults() {
 function resetGame() {
     playerScore = 0;
     charlotteScore = 0;
-    playerChoice = "your choice";
-    charlotteChoice = "charlotte's choice";
+    playerChoice = `your <strong>choice</strong>`;
+    charlotteChoice = `charlotte's <strong>choice</strong>`;
     playCount = 0;
     gameOver = false; // Reset gameOver so the game can restart
     document.querySelector(".round-count").innerText = `Round: ${playCount}`;
-    document.querySelector(".player-choice").innerText = `${playerChoice}`;
-    document.querySelector(".charlotte-choice").innerText = `${charlotteChoice}`;
+    document.querySelector(".player-choice").innerHTML = `${playerChoice}`;
+    document.querySelector(".charlotte-choice").innerHTML = `${charlotteChoice}`;
     document.querySelector(".player-score").innerText = `You: ${playerScore}`;
     document.querySelector(".charlotte-score").innerText = `Charlotte: ${charlotteScore}`;
     document.querySelector(".round-result").innerText = "round result";
