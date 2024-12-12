@@ -45,7 +45,7 @@ h2.race-to-five {
 }
 
 h3.round-count {
-    font-size: 52px;
+    font-size: 32px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -95,12 +95,13 @@ h3.round-count {
     align-items: center;
     justify-content: space-between;
     gap: 80px;
-    font-size: 20px;
+    font-size: 30px;
     padding: 20px;
     font-family: monospace;
     background-color: rgb(46, 45, 45);
     color: white;
     border-radius: 8px 8px 0 0;
+    font-weight: 700;
 }
 
 .round-result {
